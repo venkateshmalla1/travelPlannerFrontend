@@ -11,7 +11,7 @@ export default function TravelCard({ trip, isSelected, onClick }) {
     >
       <div style={{ height: '140px', overflow: 'hidden' }}>
         <img 
-          src={trip.imageUrl || "https://images.unsplash.com/photo-1488646953014-85cb44e25828"} 
+          src={trip.tripSummary?.destinationImageUrl}
           alt={trip.tripSummary?.destination} 
           className="w-100 h-100 object-fit-cover" 
         />
@@ -27,7 +27,7 @@ export default function TravelCard({ trip, isSelected, onClick }) {
           </p>
         </div>
         <div className="d-flex justify-content-between align-items-center mt-2 border-top pt-2">
-          <span className="small fw-bold text-success">${trip.budgetBreakdown?.totalEstimatedBudget}</span>
+          <span className="small fw-bold text-success">{trip.tripSummary.currency}{trip.budgetBreakdown?.totalEstimatedBudget}</span>
           <span className="btn btn-xs btn-outline-primary py-0 px-2 fw-bold">Open</span>
         </div>
       </div>
