@@ -1,0 +1,27 @@
+.footer {
+  background-color: #3f2fa4; /* darker than bg-dark */
+  padding: 10px;
+}
+
+.footer-text {
+  color: #f1f1f1; /* lighter text for visibility */
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-icon {
+  color: #fff;
+  font-size: 2rem; /* bigger icons */
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-icon:hover {
+  color: #0dc143; /* WhatsApp green accent */
+  transform: scale(1.2);
+}
