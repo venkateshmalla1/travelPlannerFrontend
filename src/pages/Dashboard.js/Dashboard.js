@@ -21,16 +21,27 @@ export default function Dashboard() {
   };
 
   const handlePlanningSubmit = async (e) => {
-    e.preventDefault();
-    if (!destination) return;
-    try {
-      await generateNewTrip({ destination, numberOfDays, budgetCategory, interests: selectedInterests }, auth.token);
-      setDestination('');
-      setSelectedInterests([]);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  e.preventDefault();
+
+  if (!destination || loading) return;
+
+  try {
+    await generateNewTrip(
+      {
+        destination,
+        numberOfDays,
+        budgetCategory,
+        interests: selectedInterests
+      },
+      auth.token
+    );
+
+    setDestination('');
+    setSelectedInterests([]);
+  } catch (err) {
+    console.error(err);
+  }
+};
 
   return (
     <div className="container-fluid px-4">
@@ -65,9 +76,13 @@ export default function Dashboard() {
                   ))}
                 </div>
               </div>
-              <button type="submit" className="btn btn-success w-100 fw-bold mt-2" disabled={loading}>
-                Generate Plan
-              </button>
+              <button
+  type="submit"
+  className="btn btn-success w-100 fw-bold mt-2"
+  disabled={loading}
+>
+  {loading ? 'Generating...' : 'Generate Plan'}
+</button>
             </form>
           </div>
           <div className="mt-4">
